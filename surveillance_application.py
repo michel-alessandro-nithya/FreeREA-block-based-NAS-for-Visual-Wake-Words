@@ -1,6 +1,6 @@
 import cv2
 from PIL import Image
-from .. import Network
+from Network import Network
 import torch
 import os
 import pygame
@@ -20,6 +20,7 @@ model_architecture = [
     [['ConvNext', 5], ['ConvNext', 5], [1,1,1]]
 ]
 
+print("Starting camera...")
 # Ottieni il percorso del modello
 current_directory = os.path.dirname(os.path.abspath(__file__))
 trained_model_path = os.path.join(current_directory, "BEST_MODEL_TRAINED.tar")
@@ -37,6 +38,7 @@ def predict_image(image):
 # Inizializza la telecamera
 camera = cv2.VideoCapture(0)
 
+print("PRESS q to quit.")
 # Ciclo per acquisire e analizzare le immagini
 while True:
     # Leggi l'immagine dalla telecamera
