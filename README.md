@@ -8,3 +8,5 @@ You can install them by running
 
 `pip install opencv-python`
 `pip install pygame`.
+
+Then, simply click on surveillance_application.py and see our model in action!
