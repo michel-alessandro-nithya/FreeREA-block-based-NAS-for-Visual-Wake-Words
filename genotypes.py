@@ -13,7 +13,7 @@ def sample_cell():
 
 # There are two different cells and 2^3 - 1 (0,0,0) different types of connections.
 # Therefore, there are 6 * 6 * 7 =  288 different blocks.
-# However, some blocks are isomorphe. Therefore the number of different blocks is 186
+# However, some blocks are isomorphe. Therefore the number of different blocks is 180
 def sample_block():
     # sample cell 1
     op1 = sample_cell()
@@ -109,6 +109,16 @@ def equal_block(block_1,block_2) -> bool :
     
     if complete_mode(info_1) and complete_mode(info_2):
         result = block_1[0] == block_2[0] and block_1[1] == block_2[1] and info_1["skip"] == info_2["skip"]
+    
+    # Sequential and operational mode isomorphism
+    
+    if one_operation_mode(info_1) and sequential_mode(info_2) and info_2["skip"] == 0:
+        if block_2[0] == block_2[1] :
+            result = block_1[0] == block_2[0]
+    
+    if one_operation_mode(info_2) and sequential_mode(info_1) and info_1["skip"] == 0:
+        if block_1[0] == block_1[1] :
+            result = block_1[0] == block_2[0]
     
     # Default: if two blocks are connected differently, then they are not equal
     return result
